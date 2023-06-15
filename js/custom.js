@@ -28,10 +28,25 @@ $(function () {
         },
         slideActiveClass: 'on',
     });
+
     $('.main_visual .arrows .left').on('click', function () {
         mainSlide.slidePrev();
     });
     $('.main_visual .arrows .right').on('click', function () {
         mainSlide.slideNext();
+    });
+
+
+    const noticeSlide = new Swiper('.notice_slide', {
+        loop: true,
+        slidesPerView: "2",
+        spaceBetween: 30,
+    });
+
+    $('.main_notice .arrows .left').on('click', function () {
+        noticeSlide.slidePrev();
+    });
+    $('.main_notice .arrows .right').on('click', function () {
+        noticeSlide.slideNext();
     });
 })

@@ -18,11 +18,60 @@
     font-size: 20rem;
     padding: 20rem 30rem;
     border-radius: 30rem;
+    overflow: hidden;
+}
+
+.btn2 {
+    display: inline-block;
+    font-size: 18rem;
+    padding: 10rem 20rem;
+    /* 18+10/2 아무튼 20이래*/
+    border-radius: 20rem;
+    overflow: hidden;
+    color: var(--wc);
+    background: var(--dc);
+}
+
+.btn3 {
+    display: inline-block;
+    font-size: 14rem;
+    padding: 5rem 10rem 4rem 10rem;
+    border-radius: 10rem;
+    overflow: hidden;
+    color: var(--mc);
+    border: 2px solid var(--mc);
+}
+
+.btn::after {
+    content: "\f1be";
+    font-family: bootstrap-icons;
+    vertical-align: -3px;
+    margin: 0 0 0 15rem;
 }
 
 .btn.wc {
+    position: relative;
     color: var(--wc);
     border: 3px solid var(--wc);
+
+}
+
+.btn.wc::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 0;
+    z-index: -1;
+    background: var(--mc);
+    transition: .5s;
+}
+
+.btn.wc:hover::before {
+    top: auto;
+    bottom: 0;
+    height: 100%;
 }
 
 .btn.mc {
@@ -30,11 +79,19 @@
     border: 3px solid var(--mc);
 }
 
-.btn::after {
-    content: "\f1be";
-    font-family: bootstrap-icons;
-    vertical-align: middle;
-    margin: 0 0 0 15rem;
+.list_dot>* {
+    position: relative;
+    padding: 0 0 0 15rem;
+}
+
+.list_dot>*::before {
+    content: "";
+    position: absolute;
+    top: 7rem;
+    left: 0;
+    width: 2rem;
+    height: 2rem;
+    background: var(--mc);
 }
 
 .section {
@@ -44,6 +101,8 @@
 .section.gc {
     background: var(--gc);
 }
+
+.wrap {}
 
 .header {
     position: fixed;
@@ -83,6 +142,8 @@
 .header.on h1 img:last-child {
     filter: invert();
 }
+
+.gnb {}
 
 .gnb .main_menu {
     display: flex;
@@ -203,9 +264,10 @@
     position: absolute;
     top: 50%;
     left: 50%;
-    text-align: center;
     transform: translate(-50%, -50%);
     z-index: 999;
+
+    text-align: center;
 }
 
 .main_slide .itm .img_box {
@@ -215,6 +277,7 @@
 .main_slide .itm p {
     color: var(--wc);
     margin: 0 0 50rem 0;
+    text-align: center;
     font-size: 17rem;
     font-weight: 300;
     line-height: 26rem;
@@ -229,8 +292,8 @@
 }
 
 .main_slide .itm .btn {
-    opacity: 0;
     transform: translate(100rem, 0);
+    opacity: 0;
     transition: .5s 1.5s;
 }
 
@@ -240,7 +303,7 @@
 }
 
 /* .swiper-wrapper {
-    transition-timing-function: cubic-bezier(.78, .15, 1, .47);
+    transition-timing-function: cubic-bezier(0.17, 0.46, 1, 0.39);
 } */
 
 .main_slide .itm01 .slide-image {
@@ -257,10 +320,10 @@
     position: absolute;
     top: 50%;
     left: 50%;
+    z-index: 998;
     transform: translate(-50%, -50%);
     max-width: 1600rem;
     width: 100%;
-    z-index: 998;
 }
 
 .main_visual .arrows i {
@@ -288,7 +351,7 @@
 .main_visual .btn_cicle {
     position: absolute;
     bottom: -100rem;
-    right: 100rem;
+    right: 300rem;
     z-index: 999;
 
     width: 200rem;
@@ -323,51 +386,6 @@
     margin: 0 0 20rem 0;
 }
 
-/* .sec {
-    position: relative;
-    padding: 100px 0;
-    height: 60vh;
-}
-
-.sec::before {
-    content: "";
-    position: absolute;
-    top: -100px;
-    right: 200px;
-    width: 100px;
-    height: 100px;
-    background: tomato;
-    border-radius: 50%;
-    z-index: 999;
-
-    opacity: 0;
-    transform: scale(0);
-}
-
-.sec.on::before {
-    opacity: 1;
-    transform: scale(1);
-}
-
-.sec .inner {
-    display: flex;
-    gap: 60px;
-}
-
-.sec .inner .itm {
-    flex: 1;
-    height: 300px;
-    background: tomato;
-
-    opacity: 0;
-    transform: translate(0, 300px);
-    transition: 0.5s;
-}
-
-.sec.on .inner .itm {
-    opacity: 1;
-    transform: translate(0, 0);
-} */
 
 .main_content {}
 
@@ -404,13 +422,142 @@
     margin: 0 0 17rem 0;
 }
 
-.main_content .content p {
+.main_content .content .left {
+    opacity: 0;
+    transform: translate(0, 100rem);
+    transition: .8s;
+}
+
+.main_content.on .content .left {
+    opacity: 1;
+    transform: translate(0, 0);
+}
+
+.main_content .content .right {
+    opacity: 0;
+    transform: translate(0, 100rem);
+    transition: .8s .2s;
+}
+
+.main_content.on .content .right {
+    opacity: 1;
+    transform: translate(0, 0);
+}
+
+.main_content .content .left p {
     font-size: 15rem;
     font-weight: 300;
     line-height: 20rem;
     margin: 0 0 57rem 0;
 }
 
+.main_content .content .right .desc {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 0 30rem 0;
+    padding: 0 0 15rem 0;
+    border-bottom: 1px dashed var(--lc);
+}
+
+.main_content .content .right .desc i {
+    background: var(--gc);
+    padding: 15rem 16rem;
+    border-radius: 50%;
+    font-size: 30rem;
+}
+
+.main_content .content .right .desc .tel {
+    font-size: 40rem;
+    font-weight: 700;
+}
+
+.main_content .content .list>* {
+    display: grid;
+    grid-template-columns: 100rem 1fr;
+    margin: 0 0 20rem 0;
+    line-height: 1.6;
+}
+
+.main_content .content .list .ls2 {
+    letter-spacing: 30rem;
+}
+
+.main_content .content .list>*::before {
+    top: 10rem;
+}
+
+/* main_notice */
+.main_notice {
+    padding: 0 0 100rem 0;
+}
+
+.main_notice .content {
+    opacity: 0;
+    transform: translate(0, 100rem);
+    transition: .8s;
+}
+
+.main_notice.on .content {
+    opacity: 1;
+    transform: translate(0, 0);
+    transition: .8s;
+}
+
+.main_notice h2 {
+    font-size: 50rem;
+    font-weight: 700;
+    margin: 0 0 27rem 0;
+}
+
+.main_notice .arrows i {
+    padding: 14rem 16rem;
+    font-size: 25rem;
+    background: var(--mc);
+    color: var(--wc);
+    border-radius: 50%;
+    margin: 0 10rem 0 0;
+    cursor: pointer;
+}
+
+.main_notice p {
+    font-size: 15rem;
+    font-weight: 300;
+    line-height: 20rem;
+    margin: 0 0 57rem 0;
+}
+
+.main_notice .content {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+}
+
+.main_notice .right {
+    overflow: hidden;
+}
+
+.main_notice img {
+    width: 100%;
+    height: 300rem;
+    object-fit: cover;
+}
+
+.main_notice .card {
+    padding: 15rem;
+    background: var(--gc);
+    border-radius: 10rem;
+}
+
+.main_notice .card .img_box {
+    border-radius: 5rem;
+    overflow: hidden;
+    margin: 0 0 15rem 0;
+}
+
+.main_notice .card strong {
+    display: block;
+    margin: 10rem 0;
+}
 
 .footer {
     height: 100vh;
