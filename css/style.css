@@ -744,6 +744,7 @@
     left: 50%;
     color: var(--dc);
     transform: translate(-50%, -50%);
+    line-height: 45rem;
 }
 
 .footer .top .txt span::after {
@@ -774,22 +775,60 @@
 
 .footer .top .dots span {
     position: absolute;
+    bottom: 110rem;
+    left: 50%;
+    color: var(--wc);
+}
+
+.footer .top .dots span::before {
+    content: "";
+    position: absolute;
+    bottom: -30rem;
+    left: 50%;
+    transform: translate(-50%, 0);
+    width: 5px;
+    height: 5px;
+    background: var(--gc);
+    border-radius: 50%;
+    animation: scale 5s infinite;
+}
+
+.footer .top .dots span::after {
+    content: "";
+    position: absolute;
+    bottom: -30rem;
     left: 50%;
     width: 5px;
     height: 5px;
     background: var(--gc);
     border-radius: 50%;
-    font-size: 0;
 }
 
 .footer .top .dots span:nth-child(1) {
-    bottom: 310rem;
-    margin: 0 0 0 -310rem;
+    bottom: 350rem;
+    margin: 0 0 0 -320rem;
 }
 
 .footer .top .dots span:nth-child(2) {
-    bottom: 200rem;
-    margin: 0 0 0 160rem;
+    bottom: 230rem;
+    margin: 0 0 0 150rem;
+}
+
+@keyframes scale {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    50% {
+        transform: scale(8);
+        opacity: 0.2;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
 }
 
 .footer .bottom {
