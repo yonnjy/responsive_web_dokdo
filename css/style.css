@@ -102,14 +102,12 @@
     background: var(--gc);
 }
 
-.wrap {}
-
 .header {
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
-    z-index: 999;
+    z-index: 1000;
     border-bottom: 1px solid rgba(255, 255, 255, 0.3);
 }
 
@@ -142,8 +140,6 @@
 .header.on h1 img:last-child {
     filter: invert();
 }
-
-.gnb {}
 
 .gnb .main_menu {
     display: flex;
@@ -334,10 +330,20 @@
 
 .main_visual .arrows .left {
     left: 15rem;
+    transition: .5s;
+}
+
+.main_visual:hover .arrows .left {
+    transform: translate(50rem, 0);
 }
 
 .main_visual .arrows .right {
     right: 15rem;
+    transition: .5s;
+}
+
+.main_visual:hover .arrows .right {
+    transform: translate(-50rem, 0);
 }
 
 .main_visual .arrows i::before {
@@ -347,6 +353,64 @@
     background: rgba(0, 0, 0, 0.3);
     border-radius: 50%;
 }
+
+
+.main_visual .scroll {
+    position: absolute;
+    bottom: 100rem;
+    left: 50%;
+    transform: translate(-50%, 0);
+    z-index: 999;
+}
+
+.main_visual .scroll span {
+    position: relative;
+    color: #fff;
+    font-size: 12rem;
+    text-transform: uppercase;
+}
+
+.main_visual .scroll span::before {
+    content: "";
+    position: absolute;
+    top: 30rem;
+    left: 50%;
+    width: 1px;
+    height: 85rem;
+    transform: translate(-50%, 0);
+    background: rgba(255, 255, 255, 0.5);
+}
+
+.main_visual .scroll span::after {
+    content: "";
+    position: absolute;
+    top: 30rem;
+    left: 50%;
+    width: 5rem;
+    height: 5rem;
+    border-radius: 50%;
+    transform: translate(-50%, 0);
+    background: rgba(255, 255, 255, 1);
+    animation: circle 1.5s infinite linear;
+}
+
+@keyframes circle {
+    0% {
+        transform: translate(-50%, 0);
+        outline: 0 solid rgba(255, 255, 255, 1);
+    }
+
+    90% {
+        outline: 0 solid rgba(255, 255, 255, 1);
+    }
+
+    100% {
+        transform: translate(-50%, 85rem);
+        outline: 20rem solid rgba(255, 255, 255, 0);
+    }
+}
+
+
 
 .main_visual .btn_cicle {
     position: absolute;
@@ -385,9 +449,6 @@
     background: url(../images/icon_apply.svg) no-repeat center center/cover;
     margin: 0 0 20rem 0;
 }
-
-
-.main_content {}
 
 .main_content .content {
     display: grid;
@@ -487,11 +548,6 @@
     top: 10rem;
 }
 
-/* main_notice */
-.main_notice {
-    padding: 0 0 100rem 0;
-}
-
 .main_notice .content {
     opacity: 0;
     transform: translate(0, 100rem);
@@ -532,14 +588,30 @@
     grid-template-columns: 1fr 2fr;
 }
 
-.main_notice .right {
-    overflow: hidden;
+.main_notice .right_slide {
+    position: relative;
+    min-width: 0;
 }
 
-.main_notice img {
-    width: 100%;
+.main_notice .right_slide::before {
+    content: "";
+    position: absolute;
+    top: -50rem;
+    left: -50rem;
+    width: 150rem;
+    height: 150rem;
+    outline: 50rem solid var(--mc);
+    border-radius: 50%;
+}
+
+.main_notice .img_box {
     height: 300rem;
+}
+
+.main_notice .img_box img {
+    width: 100%;
     object-fit: cover;
+    transform: translate(0, -17rem);
 }
 
 .main_notice .card {
@@ -559,6 +631,201 @@
     margin: 10rem 0;
 }
 
-.footer {
-    height: 100vh;
+/* main_banner */
+.main_banner .content {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30rem;
+    background: var(--mc);
+    color: var(--wc);
+    margin: 0 auto -50rem auto;
+    border-radius: 50rem;
+    box-shadow: 10rem 10rem 20rem rgba(0, 0, 0, 0.2);
+
+    transition: .5s;
+    transform: translate(0, 100rem);
+    z-index: 999;
+}
+
+.main_banner.on .content {
+    transform: translate(0, 0);
+}
+
+.main_banner .content li {
+    position: relative;
+}
+
+.main_banner .content li a::after {
+    content: "";
+    position: absolute;
+    right: 80rem;
+    top: 50%;
+    width: 100rem;
+    height: 100rem;
+    transform: translate(0, -50%);
+    background: url(../images/icon_experience.svg) no-repeat center center;
+}
+
+.main_banner .content li:last-child a::after {
+    content: "";
+    position: absolute;
+    right: 80rem;
+    top: 50%;
+    width: 100rem;
+    height: 100rem;
+    transform: translate(0, -50%);
+    background: url(../images/icon_theater.svg) no-repeat center center;
+}
+
+.main_banner .content li~li::before {
+    content: "";
+    position: absolute;
+    left: -15rem;
+    top: 30rem;
+    bottom: 30rem;
+    width: 1px;
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.main_banner .content a {
+    display: block;
+    padding: 60rem 80rem;
+}
+
+.main_banner .content h3 {
+    font-size: 30rem;
+    font-weight: 500;
+    margin: 0 0 20rem 0;
+}
+
+.main_banner .content p {
+    font-size: 15rem;
+    line-height: 21rem;
+}
+
+/* footer */
+.footer .top {
+    position: relative;
+    border-radius: 180rem 0 0 0;
+    overflow: hidden;
+    height: 800rem;
+    background: #434250 url(../images/bg_banner.jpg) no-repeat center bottom;
+    padding: 200rem 0 300rem 0;
+}
+
+.footer .top .content {
+    text-align: center;
+}
+
+.footer .top .content .img_box {
+    width: 250rem;
+    margin: 0 auto 50rem auto;
+}
+
+.footer .top .content .txt {
+    font-size: 30rem;
+    font-weight: 500;
+    font-family: 'Noto Serif KR';
+    color: var(--gc);
+}
+
+.footer .top .txt {
+    position: relative;
+    font-size: 28rem;
+    text-align: center;
+    font-family: 'Noto Serif KR';
+}
+
+.footer .top .txt span {
+    position: absolute;
+    display: block;
+    top: 50%;
+    left: 50%;
+    color: var(--dc);
+    transform: translate(-50%, -50%);
+}
+
+.footer .top .txt span::after {
+    content: "“ 경상북도 울릉읍 독도리 1-96 ”";
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: var(--wc);
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 1px solid var(--wc);
+    animation: typing 8s infinite steps(28, end);
+}
+
+@keyframes typing {
+    0% {
+        width: 0;
+    }
+
+    50% {
+        width: 100%;
+    }
+
+    100% {
+        width: 0;
+    }
+}
+
+.footer .top .dots span {
+    position: absolute;
+    left: 50%;
+    width: 5px;
+    height: 5px;
+    background: var(--gc);
+    border-radius: 50%;
+    font-size: 0;
+}
+
+.footer .top .dots span:nth-child(1) {
+    bottom: 310rem;
+    margin: 0 0 0 -310rem;
+}
+
+.footer .top .dots span:nth-child(2) {
+    bottom: 200rem;
+    margin: 0 0 0 160rem;
+}
+
+.footer .bottom {
+    padding: 50rem 0 100rem 0;
+    background: #393846;
+    color: var(--gc);
+    font-size: 15rem;
+    font-weight: 300;
+}
+
+.footer .bottom .customer {
+    display: flex;
+    gap: 40rem;
+    margin: 0 0 10rem 0;
+}
+
+.footer .bottom .customer>* {
+    position: relative;
+}
+
+.footer .bottom .customer li~li::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: -20rem;
+    width: 2px;
+    height: 2px;
+    transform: translate(-50%, -50%);
+    background: var(--lc);
+}
+
+.footer .bottom .adress {
+    margin: 0 0 30rem 0;
+}
+
+.footer .bottom .copyright {
+    font-size: 12rem;
+    color: var(--lc);
 }
