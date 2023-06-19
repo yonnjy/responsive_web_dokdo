@@ -868,6 +868,11 @@
 
 /* 반응형 */
 @media (max-width: 768px) {
+
+    html {
+        font-size: 1px;
+    }
+
     * {
         outline: 1px solid --tomato;
     }
