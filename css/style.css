@@ -75,8 +75,33 @@
 }
 
 .btn.mc {
+    position: relative;
     color: var(--mc);
     border: 3px solid var(--mc);
+    background: #fff;
+    z-index: 999;
+}
+
+.btn.mc::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 0;
+    z-index: -1;
+    background: var(--mc);
+    transition: .5s;
+}
+
+.btn.mc:hover {
+    color: #fff;
+}
+
+.btn.mc:hover::before {
+    top: auto;
+    bottom: 0;
+    height: 100%;
 }
 
 .list_dot>* {
@@ -464,17 +489,17 @@
     position: relative;
     border-radius: 50rem;
     background: var(--gc);
+    overflow: hidden;
 }
 
 .main_content .content .left::after {
     content: "";
     position: absolute;
-    bottom: -20rem;
+    bottom: 0;
     right: 0;
-    width: 400rem;
-    height: 150rem;
-    background: url(../images/img_logo2.svg) no-repeat right bottom;
-    filter: invert();
+    width: 413rem;
+    height: 207rem;
+    background: url(../images/img_dokdo.png) no-repeat right bottom;
 }
 
 .main_content .content h3 {
@@ -521,11 +546,20 @@
     border-bottom: 1px dashed var(--lc);
 }
 
-.main_content .content .right .desc i {
-    background: var(--gc);
-    padding: 15rem 16rem;
+.main_content .content .right .desc .img_box {
+    background: #444;
+    width: 68rem;
+    height: 68rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     border-radius: 50%;
     font-size: 30rem;
+}
+
+.main_content .content .right .desc img {
+    width: 32px;
+    filter: invert();
 }
 
 .main_content .content .right .desc .tel {
@@ -899,7 +933,7 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        height: 120rem;
+        height: 70rem;
 
         transition: height .5s;
     }
@@ -914,7 +948,7 @@
     }
 
     .header h1 img {
-        height: 39rem;
+        height: 34rem;
     }
 
     .header.oo h1 img:last-child {
@@ -1064,7 +1098,12 @@
         margin: 0 0 50rem 0;
     }
 
+    .main_slide .itm .img_box img {
+        width: 80%;
+    }
+
     .main_slide .itm p {
+        font-size: 16rem;
         word-break: keep-all;
     }
 
@@ -1241,14 +1280,14 @@
         bottom: -20rem;
         right: 0;
         width: 400rem;
-        height: 150rem;
-        background: url(../images/img_logo2.svg) no-repeat right bottom;
-        filter: invert();
+        height: 207rem;
+        background: url(../images/img_dokdo.png) no-repeat right bottom;
+
     }
 
     .main_content .content h3 {
-        font-size: 24rem;
-        font-weight: 700;
+        font-size: 30rem;
+        font-weight: 900;
         margin: 0 0 17rem 0;
     }
 
@@ -1283,6 +1322,11 @@
         margin: 0 0 57rem 0;
     }
 
+    .main_content .content .right {
+        border-radius: 10rem;
+        background: var(--gc);
+    }
+
     .main_content .content .right .desc {
         display: flex;
         justify-content: space-between;
@@ -1292,13 +1336,18 @@
         border-bottom: 1px dashed var(--lc);
     }
 
-    .main_content .content .right .desc i {
+    .main_content .content .right .desc .img_box {
         display: none;
     }
 
     /* durl */
     .main_content .content .right .desc .tel {
-        font-size: 30rem;
+        font-size: 24rem;
+        font-weight: 900;
+    }
+
+    .main_content .content .right .desc .btn2 {
+        font-size: 14rem;
     }
 
     .main_content .content .list>* {
@@ -1316,6 +1365,10 @@
         top: 10rem;
     }
 
+    .main_notice {
+        border-top: 1px solid #eee;
+    }
+
     .main_notice .content {
         opacity: 0;
         transform: translate(0, 100rem);
@@ -1330,16 +1383,18 @@
     }
 
     .main_notice h2 {
-        margin: 0 0 20rem 0;
+        font-size: 30rem;
+        font-weight: 900;
+        margin: 0 0 12rem 0;
     }
 
     .main_notice .arrows i {
-        padding: 14rem 16rem;
+        padding: 10rem 12rem;
         font-size: 25rem;
         background: var(--mc);
         color: var(--wc);
         border-radius: 50%;
-        margin: 0 10rem 0 0;
+        margin: 0 8rem 0 0;
         cursor: pointer;
     }
 
@@ -1422,10 +1477,10 @@
         content: "";
         position: absolute;
         right: 15rem;
-        top: 50%;
-        width: 80rem;
-        height: 80rem;
-        transform: translate(0, -50%);
+        top: 0;
+        width: 50rem;
+        height: 50rem;
+        transform: translate(0, 0);
         background: url(../images/icon_experience.svg) no-repeat center center;
     }
 
@@ -1433,10 +1488,10 @@
         content: "";
         position: absolute;
         right: 15rem;
-        top: 50%;
-        width: 80rem;
-        height: 80rem;
-        transform: translate(0, -50%);
+        top: 12rem;
+        width: 50rem;
+        height: 50rem;
+        transform: translate(0, 0);
         background: url(../images/icon_theater.svg) no-repeat center center;
     }
 
@@ -1458,14 +1513,14 @@
     }
 
     .main_banner .content h3 {
-        font-size: 30rem;
-        font-weight: 500;
+        font-size: 24rem;
+        font-weight: 700;
         margin: 0 0 20rem 0;
     }
 
     .main_banner .content p {
         font-size: 15rem;
-        line-height: 21rem;
+        line-height: 22rem;
     }
 
     /* footer */
@@ -1564,12 +1619,12 @@
     }
 
     .footer .top .dots span:nth-child(1) {
-        bottom: 46%;
+        bottom: 34%;
         margin: 0 0 0 -43%;
     }
 
     .footer .top .dots span:nth-child(2) {
-        bottom: 33%;
+        bottom: 25%;
         margin: 0 0 0 20%;
     }
 
@@ -1630,22 +1685,28 @@
     .mobile_btn {
         position: fixed;
         display: block;
-        top: 43rem;
-        right: 30rem;
+        top: 18rem;
+        right: 15rem;
         z-index: 1000;
         padding: 5rem 7rem;
-        background: var(--gc);
+        border: 1px solid #ddd;
         cursor: pointer;
         border-radius: 5px;
         transition: .3s;
     }
 
     .header.on .mobile_btn {
-        top: 20rem;
+        background: #eee;
+        border: 1px solid #eee;
+        top: 18rem;
+    }
+
+    .header.on .mobile_btn i {
+        color: #444;
     }
 
     .mobile_btn i {
-        color: var(--dc);
+        color: #fff;
         font-size: 24rem;
     }
 }
